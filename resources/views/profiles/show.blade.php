@@ -13,9 +13,9 @@
                     <button class="btn btn-sm btn-primary">S'abonner</button>
                 </div>
                 <div class="d-flex mt-3">
-                    <div class="mr-3"><strong>25</strong>publications</div>
-                    <div class="mr-3"><strong>951</strong>abonnés</div>
-                    <div class="mr-3"><strong>3</strong>abonnements</div>
+                    <div class="mr-3"><strong class="mr-1">{{ $user->posts->count() }}</strong>publication(s)</div>
+                    <div class="mr-3"><strong class="mr-1">951</strong>abonnés</div>
+                    <div class="mr-3"><strong class="mr-1">3</strong>abonnements</div>
                 </div>
                 <div class="mt-3">
                     <div class="font-weight-bold">{{ $user->profile->title }}</div>
@@ -27,15 +27,11 @@
     </div>
 
     <div class="row mt-5">
+       @foreach($user->posts as $post)
             <div class="col-4">
-                <img src="{{ asset('/svg/si2.jpg') }}" class="w-100">
+                <img src="{{ asset('storage') . '/' . $post->image }}" class="w-100">
             </div>
-            <div class="col-4">
-                <img src="{{ asset('/svg/si6.png') }}" class="w-100">
-            </div>
-            <div class="col-4">
-                <img src="{{ asset('/svg/qs6.jpg') }}" class="w-100">
-            </div>
-        </div>
+       @endforeach     
+    </div>
 </div>
 @endsection
