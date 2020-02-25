@@ -37,7 +37,7 @@
             <div class="col-4 pb-3">
                 <a href="{{ route('posts.show', ['post' => $post->id]) }}"><img src="{{  asset('storage') . '/' . $post->image   }}" class="w-100"></a>
             </div>
-       @endforeach     
+       @endforeach  
     </div>
 </div>
 @endsection
