@@ -14,9 +14,9 @@
                     <follow-button profile-id="{{ $user->profile->id }}" follows="{{ $follows }}"></follow-button>
                 </div>
                 <div class="d-flex mt-3">
-                    <div class="mr-3"><strong class="mr-1">{{ $user->posts->count() }}</strong>publication(s)</div>
-                    <div class="mr-3"><strong class="mr-1">{{ $user->profile->followers->count() }}</strong>abonnés</div>
-                    <div class="mr-3"><strong class="mr-1">{{ $user->following->count() }}</strong>abonnements</div>
+                    <div class="mr-3"><strong class="mr-1">{{ $postsCount }}</strong>publication(s)</div>
+                    <div class="mr-3"><strong class="mr-1">{{ $followersCount }}</strong>abonnés</div>
+                    <div class="mr-3"><strong class="mr-1">{{ $followingCount }}</strong>abonnements</div>
                 </div>
                 
                 @can('update', $user->profile)
