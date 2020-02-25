@@ -60,6 +60,12 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
+    public function following()
+    {
+        // Plusieurs utilisateurs peuvent s'abonner à plusieurs profiles
+        return $this->belongsToMany(Profile::class);
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class)->orderBy('created_at', 'DESC');

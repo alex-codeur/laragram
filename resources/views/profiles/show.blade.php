@@ -10,12 +10,13 @@
             <div class="col-8">
                 <div class="d-flex align-item-baseline">
                     <div class="h4 mr-3 pt-2">{{ $user->username }}</div>
-                    <button class="btn btn-sm btn-primary">S'abonner</button>
+
+                    <follow-button profile-id="{{ $user->profile->id }}" follows="{{ $follows }}"></follow-button>
                 </div>
                 <div class="d-flex mt-3">
                     <div class="mr-3"><strong class="mr-1">{{ $user->posts->count() }}</strong>publication(s)</div>
-                    <div class="mr-3"><strong class="mr-1">951</strong>abonnés</div>
-                    <div class="mr-3"><strong class="mr-1">3</strong>abonnements</div>
+                    <div class="mr-3"><strong class="mr-1">{{ $user->profile->followers->count() }}</strong>abonnés</div>
+                    <div class="mr-3"><strong class="mr-1">{{ $user->following->count() }}</strong>abonnements</div>
                 </div>
                 
                 @can('update', $user->profile)

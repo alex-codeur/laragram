@@ -14,6 +14,12 @@ class Profile extends Model
         return $this->belongsTo(User::class);
     }
 
+    // Les suiveurs du profil
+    public function followers()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     public function getImage()
     {
         $imagePath = $this->image ?? 'avatars/default.png';
