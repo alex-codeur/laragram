@@ -2,11 +2,13 @@
 
 namespace App;
 
-use App\Profile;
 use App\Post;
+use App\Profile;
+use App\Mail\WelcomeUserMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -44,10 +46,13 @@ class User extends Authenticatable
         parent::boot();
 
         static::created(function ($user) {
-            $user->profile()->create([
+            $data = $user->profile()->create([
                 'title' => 'Profile de ' . $user->username
             ]);
+
+            Mail::to($data->user->email)->send(new WelcomeUserMail($data->user));
         });
+
     }
 
     public function getRouteKeyName()
